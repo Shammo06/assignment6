@@ -4,8 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="navbar bg-base-100 py-8 px-14">
+                <div class="navbar-start">
+                  <img src="img/Logo.png" alt="">
+                  
+                </div>
+                <div class="navbar-center">
+                    <p class="w-36 h-11 bg-gray-300 font-medium text-center align-center pt-3">Sort by view</p>
+                </div>
+                <div class="navbar-end">
+                  <a class="btn bg-[#FF1F3D] text-white">Blog</a>
+                </div>
+              </div>
+
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="text-center pb-5" id="title" >
+                                 
+        </div>
+        <section>
+            <div id="container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pl-12 px-14 mb-10">
+                
+            </div>
+        </section>
+
+    </main>
+    <script>
+
+               
+        fetch('https://openapi.programming-hero.com/api/videos/categories')
+            .then(res=> res.json())
+            .then(data=>data.data.forEach(data=>{
+                const title= document.getElementById('title')                              
+                const titleButton= document.createElement('button') 
+                titleButton.innerHTML = `
+                <button class="btn btn-outline btn-secondary" onclick= selector(${data.category_id})>
+                    ${data.category}
+                </button>
+                `
+                title.appendChild(titleButton)
+                
+                  
+                 
+            }))
+            
+
+           
     
+        const loadData = async (a) =>{
+            const res= await fetch(`https://openapi.programming-hero.com/api/videos/category/${a}`)
+            const data = await res.json();
+            const dataValue = data.data
+            displayCard(dataValue)
+           
+
+        }
+        loadData(1000)
+
+        const displayCard = data =>{
+            
+            const cardContainer= document.getElementById('container')
+            cardContainer.textContent=''
+            if (data.length != 0){
+                data.forEach(data =>{
+                const card= document.createElement('div')
+                card.classList = `card w-84 bg-base-100 shadow-xl`
+                card.innerHTML = `
+                <figure><img class='h-60' src="${data.thumbnail}" alt="" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <img class='w-10 h-10 rounded-full' src="${data.authors[0].profile_picture}">
+                        ${data.title}
+                    </h2>
+                    <p class='pl-12'>${data.authors[0].profile_name}</p>
+                    <p class='pl-12'>${data.others.views} views</p>
+                </div>
+                `            
+                cardContainer.appendChild(card)
+            })
+            }
+            else {
+                const card= document.createElement('div')
+                card.classList = `pt-20`
+                card.innerHTML=`
+                <img src="img/Icon.png" alt="">
+                <p>Oops!! Sorry, There is no content here</p>
+                `
+                cardContainer.appendChild(card)
+
+            }
+        
+                
+        }        
+
+        function selector(a){
+            const b = a
+            console.log(a)
+            loadData(a)
+        }
+    </script>
 </body>
 </html>
