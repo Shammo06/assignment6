@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <main>
+        <div class="collapse collapse-arrow bg-base-200 px-32 ">
+            <input type="radio" name="my-accordion-2" checked="checked" /> 
+            <div class="collapse-title text-xl font-medium text-center">
+                Scope of var, let, and const
+            </div>
+            <div class="collapse-content">
+                <h1 class="text-xl text-black text-center">var</h1>
+                <p>Function Scope: Variables declared with var are function-scoped. This means they are only accessible within the function in which they are defined.
+                    Hoisting: Variables declared with var are hoisted, which means they are moved to the top of their function or global scope during compilation.</p>
+                <h1 class="text-xl text-black text-center">let</h1>
+                <p>Block Scope: Variables declared with let are block-scoped. They are accessible only within the block (a pair of curly braces) where they are defined.
+                    No Hoisting: Unlike var, variables declared with let are not hoisted, so you cannot access them before they are declared.</p>
+                <h1 class="text-xl text-black text-center">const</h1>
+                <p>Block Scope: Like let, variables declared with const are also block-scoped.
+                    Immutable: Variables declared with const cannot be reassigned after they are initialized. However, for objects and arrays declared with const, their properties or elements can be modified.</p>
+            </div>
+          </div>
+          <div class="collapse collapse-arrow bg-base-200 px-32">
+            <input type="radio" name="my-accordion-2"/> 
+            <div class="collapse-title text-xl font-medium">
+                Use Cases of null and undefined
+            </div>
+            <div class="collapse-content"> 
+                <h1 class="text-xl text-black text-center">NULL</h1>
+              <p>
+                <ul>
+                    <li>Represents an intentional absence of any object value.</li>
+                    <li>It is often used to signify that a variable, property, or value has no meaningful value.</li>
+                    <li>It is assigned explicitly to indicate that a variable should have no value, whereas undefined typically represents unintentional absence or lack of initialization.</li>
+                </ul>
+            </p>
+                <h1 class="text-xl text-black text-center">
+                    undefined
+                </h1>
+
+                <p>
+                    <ul>
+                        <li>Typically represents an unintentional absence or lack of initialization of a value or variable.</li>
+                        <li>When a variable is declared but not assigned a value, it is undefined by default.</li>
+                        <li>It can also be explicitly assigned to indicate the absence of a value.</li>
+                    </ul>
+                </p>
+            </div>
+          </div>
+          <div class="collapse collapse-arrow bg-base-200 px-32">
+            <input type="radio" name="my-accordion-2" /> 
+            <div class="collapse-title text-xl font-medium text-center">
+                REST API (Representational State Transfer API):
+            </div>
+            <div class="collapse-content"> 
+              <ul>
+                <li>REST is an architectural style for designing networked applications.</li>
+                <li>REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) to interact with resources identified by URLs.</li>
+                <li>They are stateless and use JSON or XML for data exchange, facilitating communication between different systems over the internet.</li>
+              </ul>
+            </div>
+          </div>
+    </main>
+    <footer class="text-center pt-10 ">
+        <a href="/index.html" class="btn bg-[#FF1F3D] text-white">GO Back</a>
+        
+      </footer>
+       
+        
+</body>
+</html>
